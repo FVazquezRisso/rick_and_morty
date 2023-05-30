@@ -3,8 +3,9 @@ import Cards from "./components/Cards.jsx";
 import Nav from "./components/Nav";
 import { useState } from "react";
 import axios from "axios";
-import { Router, Routes, Route, MemoryRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import About from "./components/About";
+import Detail from "./components/Detail";
 
 export default function App() {
   const [characters, setCharacters] = useState([]);
@@ -29,17 +30,16 @@ export default function App() {
   };
 
   return (
-    <MemoryRouter>
-      <div className="App">
-        <Nav onSearch={onSearch} />
-        <Routes>
-          <Route
-            path="/home"
-            element={<Cards characters={characters} onClose={onClose} />}
-          />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </div>
-    </MemoryRouter>
+    <div className="App">
+      <Nav onSearch={onSearch} />
+      <Routes>
+        <Route
+          path="/home"
+          element={<Cards characters={characters} onClose={onClose} />}
+        />
+        <Route path="/about" element={<About />} />
+        <Route path="/detail/:id" element={<Detail />} />
+      </Routes>
+    </div>
   );
 }
