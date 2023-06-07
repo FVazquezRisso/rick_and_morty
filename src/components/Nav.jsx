@@ -6,8 +6,9 @@ import { NavLink } from "react-router-dom";
 const Navbar = styled.nav`
   display: flex;
   padding: 0.25rem;
-  border-bottom: 2px dashed ${colors.tertiary};
   justify-content: space-between;
+  background-color: rgba(138, 250, 216, 0.3);
+  backdrop-filter: blur(5px);
 `;
 
 const NavButtonsContainer = styled.div`
@@ -20,7 +21,7 @@ const NavButtonsContainer = styled.div`
 const SearchBarContainer = styled.div`
   width: 60%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
 `;
 
 const NavButtons = styled(NavLink)`
@@ -45,7 +46,27 @@ const NavButtons = styled(NavLink)`
   }
 `;
 
-export default function Nav({ onSearch }) {
+const Logout = styled.button`
+  margin: 0.5rem;
+  padding: 0.5rem;
+  background-color: ${colors.tertiary};
+  border: 2px solid ${colors.tertiary};
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+
+  &:hover {
+    color: ${colors.tertiary};
+    background-color: white;
+  }
+`;
+
+export default function Nav({ onSearch, setAccess }) {
+  const handleLogout = () => {
+    setAccess(false);
+  };
+
   return (
     <Navbar>
       <NavButtonsContainer>
@@ -56,9 +77,11 @@ export default function Nav({ onSearch }) {
           Home
         </NavButtons>
         <NavButtons to="/about">About</NavButtons>
+        <NavButtons to="/favorites">Favorites</NavButtons>
       </NavButtonsContainer>
       <SearchBarContainer>
         <SearchBar onSearch={onSearch} />
+        <Logout onClick={handleLogout}>Logout</Logout>
       </SearchBarContainer>
     </Navbar>
   );

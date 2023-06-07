@@ -1,18 +1,18 @@
+import { connect } from "react-redux";
 import Card from "./Card";
 import styled from "styled-components";
-import { colors } from "../CSS/variables";
 
-const CardsContainer = styled.div`
+const FavsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   background-color: transparent;
 `;
 
-export default function Cards({ characters, onClose }) {
+function Favorites({ myFavorites }) {
   return (
-    <CardsContainer>
-      {characters.map((card) => {
+    <FavsContainer>
+      {myFavorites.map((card) => {
         return (
           <Card
             key={card.id}
@@ -23,10 +23,17 @@ export default function Cards({ characters, onClose }) {
             gender={card.gender}
             origin={card.origin.name}
             image={card.image}
-            onClose={onClose}
           />
         );
       })}
-    </CardsContainer>
+    </FavsContainer>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    myFavorites: state.myFavorites,
+  };
+};
+
+export default connect(mapStateToProps, null)(Favorites);
