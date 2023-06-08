@@ -1,37 +1,7 @@
-import styled from "styled-components";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { colors } from "../CSS/variables";
-
-const DetailContainer = styled.div`
-  margin: 5rem auto;
-  padding: 3rem;
-  width: 70%;
-  display: flex;
-  background-color: ${colors.secondary};
-  justify-content: space-around;
-  border: 5px solid #cc9579;
-  border-radius: 50px;
-`;
-
-const InfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Nombre = styled.h2`
-  font-size: 2rem;
-`;
-
-const Info = styled.p`
-  text-align: left;
-`;
-
-const Image = styled.img`
-  border-radius: 20px;
-  border: 5px solid #cc9579;
-`;
+import { DetailContainer, InfoContainer, Nombre, Info, Image } from "./Styles";
 
 export default function Detail() {
   const id = useParams().id;

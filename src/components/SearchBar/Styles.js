@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { colors } from "../CSS/variables";
-import { useState } from "react";
+import { colors } from "../../CSS/variables";
 
-const Buscador = styled.input`
+export const Buscador = styled.input`
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 1rem;
@@ -18,7 +17,7 @@ const Buscador = styled.input`
   }
 `;
 
-const SearchButton = styled.button`
+export const SearchButton = styled.button`
   margin: 0.5rem;
   padding: 0.5rem;
   background-color: ${colors.tertiary};
@@ -33,23 +32,3 @@ const SearchButton = styled.button`
     background-color: white;
   }
 `;
-
-export default function SearchBar({ onSearch }) {
-  const [id, setId] = useState("");
-
-  const handleChange = (input) => {
-    setId(input.target.value);
-  };
-
-  return (
-    <div>
-      <Buscador
-        onChange={handleChange}
-        type="search"
-        placeholder="Buscar..."
-        value={id}
-      />
-      <SearchButton onClick={() => onSearch(id)}>Agregar</SearchButton>
-    </div>
-  );
-}

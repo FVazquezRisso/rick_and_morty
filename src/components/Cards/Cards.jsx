@@ -1,13 +1,5 @@
-import Card from "./Card";
-import styled from "styled-components";
-import { colors } from "../CSS/variables";
-
-const CardsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  background-color: transparent;
-`;
+import Card from "../Card/Card";
+import { CardsContainer } from "./Styles";
 
 export default function Cards({ characters, onClose }) {
   return (
