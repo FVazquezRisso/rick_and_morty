@@ -5,28 +5,27 @@ const initialState = {
   allCharacters: [],
 };
 
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
+const rootReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
     case ADD_FAV:
       return {
         ...state,
-        myFavorites: [...state.allCharacters, action.payload],
-        allCharacters: [...state.allCharacters, action.payload],
+        myFavorites: payload,
+        allCharacters: payload,
       };
 
     case REMOVE_FAV:
       return {
         ...state,
-        myFavorites: state.myFavorites.filter(
-          (character) => character.id !== Number(action.payload)
-        ),
+        myFavorites: payload,
+        allCharacters: payload,
       };
 
     case FILTER:
       return {
         ...state,
         myFavorites: [...state.allCharacters].filter((character) => {
-          return character.gender === action.payload;
+          return character.gender === payload;
         }),
       };
 
@@ -34,7 +33,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         myFavorites: [...state.allCharacters].sort((a, b) => {
-          return action.payload === "A" ? a.id - b.id : b.id - a.id;
+          return payload === "A" ? a.id - b.id : b.id - a.id;
         }),
       };
 

@@ -43,7 +43,7 @@ export default function Favorites() {
               status={card.status}
               species={card.species}
               gender={card.gender}
-              origin={card.origin.name}
+              origin={card.origin?.name}
               image={card.image}
             />
           );
