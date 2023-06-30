@@ -8,6 +8,7 @@ export default function Cards({ characters, onClose }) {
         return (
           <Card
             key={card.id}
+            userId={1}
             id={card.id}
             name={card.name}
             status={card.status}
